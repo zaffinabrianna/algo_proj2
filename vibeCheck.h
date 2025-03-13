@@ -16,9 +16,9 @@ class deckGroups
 
     public:
         //Default Constructor
-        deckGroups(){}
-        //Overloaded Constructor
-
+        deckGroups() : groupSize(0), hand() {}
+        //Destructor
+        ~deckGroups() {}
 
         //Sees if the array and groupsize is valid
         bool isValid(vector<int> temp, int groupSize)
@@ -48,7 +48,7 @@ class deckGroups
         }
 
         //Sees if the vector "group" of cards is valid
-        bool validGroup(vector<int> temp)
+        bool validGroup(vector<int> temp, int groupSize)
         {
              //Check if first parameters are valid
              if (!isValid(temp, groupSize))
@@ -74,12 +74,15 @@ class deckGroups
                     group.push_back(i);
                 }
 
-            } while({i != temp.size()})
+                i++;
+                j++;
+
+            } while(i != temp.size());
 
             if (i == temp.size() && group.size() != temp.size())
             {
                 cout << "The group is not valid\n";
-                return false
+                return false;
             }
 
             
@@ -90,7 +93,7 @@ class deckGroups
         }
         
         //Function to make vector groups:
-        {
+        //{
 
-        }
+        //}
 };
