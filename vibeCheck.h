@@ -60,23 +60,42 @@ class deckGroups
             //Sort the vector first
             sort(temp.begin(), temp.end());
             
-            //Make a map to store the values
-            unorderd_map<int, vector<int>>  groupStorage;
+            //Make a map to store the values repeated
+           unordered_map<int, int> repCount;
 
             //If the values are repeated store them in a diff
-            for (auto i : temp)
+            for (int card : temp)
             {
-                groupStorage[i].push_back(i);
+               repCount[card]++;
             }          
 
+            for (int i = 0; i < temp.size(); i++)
+            {
+                //Initalize the card with the value in the group
+                int card = temp[i];
+
+                //Check how many times the card has been in the group
+                if (repCount[card] == 0) 
+                {
+                    //If the count is 0, then continue
+                    continue;
+                }
+
+                for (int j = 0; j < groupSize; j++)
+                {
+                    //If the next card isn't in the group either
+                    if (repCount[card + j] == 0)
+                    {
+                        cout << "Your group is invalid, it does not increase by 1 consecutively.\n";
+                        return false;
+                    }
+
+                    repCount[card + j]--;
+                }
+            }
             //If the nested for-loop iteratoes fully without issues, it is valid
             //and returns true
             cout << "Your group is valid!\n";
             return true;
         }
-        
-        //Function to make vector groups:
-        //{
-
-        //}
 };
