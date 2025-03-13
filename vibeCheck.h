@@ -2,9 +2,10 @@
 // CPSC 335
 // Professor Bhandari
 #pragma once
-#include <vector>
 #include <iostream>
+#include <vector>
 #include <algorithm>
+#include <unordered_map>
 using namespace std;
 
 
@@ -12,11 +13,11 @@ class deckGroups
 {
     private:
         int groupSize;
-        vector<int> hand;
+        vector<int> temp;
 
     public:
         //Default Constructor
-        deckGroups() : groupSize(0), hand() {}
+        deckGroups() : groupSize(0), temp() {}
         //Destructor
         ~deckGroups() {}
 
@@ -58,34 +59,16 @@ class deckGroups
              
             //Sort the vector first
             sort(temp.begin(), temp.end());
-            //Create a new group for this vector
-            vector<int> group;
-            //Create counters
-            int i = 0;
-            int j = 1;
-
-            // do - while
-            do
-            {
-                //They are subtracted to see if their difference is 1
-                if (temp[i] - temp[j] == 1)
-                {
-                    //Push this into a new vector
-                    group.push_back(i);
-                }
-
-                i++;
-                j++;
-
-            } while(i != temp.size());
-
-            if (i == temp.size() && group.size() != temp.size())
-            {
-                cout << "The group is not valid\n";
-                return false;
-            }
-
             
+            //Make a map to store the values
+            unorderd_map<int, vector<int>>  groupStorage;
+
+            //If the values are repeated store them in a diff
+            for (auto i : temp)
+            {
+                groupStorage[i].push_back(i);
+            }          
+
             //If the nested for-loop iteratoes fully without issues, it is valid
             //and returns true
             cout << "Your group is valid!\n";
