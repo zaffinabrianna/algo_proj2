@@ -9,7 +9,18 @@ Algorithm 1 Expected Output:
 
 
 Algorithm 2 Expected Output:
+Algorithm 2 Test:
+First Test [1, 2, 3, 6, 2, 3, 4, 7, 8]:
+Your group is valid!
 
+Second Test [1, 2, 3, 3, 4, 5, 6, 7]:
+Your group is invalid, it does not increase by 1 consecutively.
+
+Third Test (Group Size 5) [1, 2, 3, 3, 4, 5, 6, 7]:
+Your group is not valid, cannot be divided into even groups
+
+Fourth Test [1, 3, 6, 2, 4, 2, 3, 8, 7]:
+Your group is valid!
 
 Boom! You're finished. main.cpp should compile test cases for all the requirements. 
 If you would like to add more test cases:
