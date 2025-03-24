@@ -61,7 +61,7 @@ class Array{
       while (!q.empty()) // if there's divided point exist
       {
         pair<int, int> us = q.front();    //our current location(1st spawn point)
-        step = 1;
+        //step = 1;
         int i = us.first;
         int j = us.second;
         q.pop();
@@ -72,35 +72,39 @@ class Array{
           int next_i = i + it->second.first;
           int next_j = j + it->second.second;
 
-
-
           if(next_i >= 0 && next_i < bound_i && next_j >= 0 && next_j < bound_j && arr[next_i][next_j] != "-1") //within bounds and not a wall
           {
             // if(arr[next_i][next_j] == "INF"){
             //   arr[next_i][next_j] = step;
             //   result[next_i][next_j] = step; //copy to result
-            //   q.push({next_i, next_j});
             //   ++step;
-            // }
-
-            // //if step count is less, overwrite
-            if (arr[next_i][next_j] > arr[i][j])
-            {
-              arr[next_i][next_j] = arr[i][j];
-              result[i][j] = 1; //++step
-              q.push({next_i, next_j});   // move forward
-
-            }
-
-
+            //   q.push({next_i, next_j}); //move spaces
+              if (arr[next_i][next_j] > arr[i][j])//if step count is less, overwrite
+              {
+                arr[next_i][next_j] = arr[i][j];
+                result[next_i][next_j] = result[i][j] + 1;    //copt to result
+                q.push({next_i, next_j}); // move spaces
+              }
+          // }
           }
 
         }
 
-      }
 
-      return result;
-    }
+      }
+        // so apparently above keeps rewriting -1, so I rewrite again
+        for (int i = 0; i < arr[0].size(); i++)
+        {
+          for (int j = 0; j < arr.size(); j++)
+          {
+            if (arr[i][j] == "-1")
+            {
+              result[i][j] = -1; // Keep it as -1 instead of a step count
+            }
+          }
+        }
+        return result;
+      }
 
       void printArray(vector<vector<int>> arr)
       {
