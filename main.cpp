@@ -1,3 +1,6 @@
+// Brianna Zaffina & Suanna Shih
+// CPSC 335
+// Professor Bhandari
 #include <iostream>
 #include <vector>
 #include "Algorithm1.h"
