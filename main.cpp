@@ -8,25 +8,32 @@
 using namespace std;
 int main(){
   int choice;
-  cout << "Test algor (1,2)?" << endl;
+  cout << "Which Algorithm do you want to test? Enter the number. (1 or 2)" << endl;
   cin >> choice;
-  switch(choice){
+  
+  switch(choice)
+  {
     case 1:{
-      cout << "Test start!" << endl;
-      std::vector<vector<string>> walls = {{"INF", "-1", "-1", "INF"},
+      cout << "Algorithm 1 Test: "  << endl;
+      std::vector<vector<string>> walls = {{"INF", "-1", "0", "INF"},
                                            {"INF", "INF", "INF", "-1"},
                                            {"INF", "-1", "INF", "-1"},
                                            {"0", "-1", "INF", "INF"}};
       std::vector<vector<string>> walls2 = {{"0", "INF", "INF"},
                                             {"INF", "-1", "INF"},
                                             {"INF", "INF", "0"}};
-
+      cout << "Test 1: " << endl;
       Array temp;
-      vector<vector<int>> spawn_point = temp.locateSpawn(walls2);
-      vector<vector<int>> result = temp.stepMap(walls2, spawn_point);
+      vector<vector<int>> spawn_point = temp.locateSpawn(walls);
+      vector<vector<int>> result = temp.stepMap(walls, spawn_point);
       temp.printArray(result);
+      cout << endl;
 
-
+      cout << "Test 2:" << endl;
+      Array temp2;
+      vector<vector<int>> spawn_point2 = temp2.locateSpawn(walls2);
+      vector<vector<int>> result2 = temp2.stepMap(walls2, spawn_point2);
+      temp.printArray(result2);
       break;
     }
 
